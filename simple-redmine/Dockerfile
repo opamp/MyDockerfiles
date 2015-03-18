@@ -22,12 +22,7 @@ ADD run.lisp /srv/redmine/run.lisp
 ADD db /srv/redmine/db.tmp
 
 RUN gem install bundler thin --no-ri --no-rdoc
-RUN bundle install --without rmagick development test --path vendor/bundle
+RUN bundle install --without rmagick development test --path vendor/bundle > /dev/null
 
+EXPOSE 1080
 CMD ["clisp" ,"./run.lisp"]
-#RUN bundle exec rake generate_secret_token
-#RUN RAILS_ENV=production bundle exec rake db:migrate
-#RUN RAILS_ENV=production REDMINE_LANG=ja bundle exec rake redmine:load_default_data
-
-#EXPOSE 1080
-#CMD ["thin","-e","production", "-p", "1080", "start"]
