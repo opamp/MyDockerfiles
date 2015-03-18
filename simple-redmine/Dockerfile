@@ -3,7 +3,7 @@ MAINTAINER opamp_sando <opampg@gmail.com>
 
 # Install redmine
 WORKDIR /srv
-RUN pacman -Syu --noconfirm ruby clisp sqlite imagemagick gcc make > /dev/null
+RUN pacman -Syu --noconfirm ruby clisp sqlite imagemagick git mercurial subversion gcc make > /dev/null
 RUN curl -O http://www.redmine.org/releases/redmine-3.0.1.tar.gz &&tar xfz redmine-3.0.1.tar.gz &&rm -f *.tar.gz &&mv redmine-3.0.1 redmine
 RUN rm -fr /srv/redmine/config
 ADD config /srv/redmine/config
