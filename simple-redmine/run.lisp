@@ -25,7 +25,7 @@
   (run-shell-command (concatenate 'string "cp -R db.tmp/* " (namestring *db-directory*)))
   (run-shell-command "bundle exec rake generate_secret_token")
   (run-shell-command "RAILS_ENV=production bundle exec rake db:migrate")
-  (run-shell-command "RAILS_ENV=production REDMINE_LANG=ja bundle exec rake redmine:local_default_data"))
+  (run-shell-command "RAILS_ENV=production REDMINE_LANG=ja bundle exec rake redmine:load_default_data"))
 
 
 (if (ignore-errors (ext:probe-directory (merge-pathnames #p"migrate/" *db-directory*)))
